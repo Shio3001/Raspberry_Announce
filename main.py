@@ -38,6 +38,9 @@ app = Flask(__name__)
  
 #環境変数取得
 # LINE Developersで設定されているアクセストークンとChannel Secretをを取得し、設定します。
+
+print(os.environ["CHANNEL_ACCESS_TOKEN"])
+print(os.environ["CHANNEL_SECRET"])
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
  
