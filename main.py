@@ -72,5 +72,5 @@ def handle_follow(event): #ラインAPIの返信機能関数に
 
 
 if __name__ == "__main__":
-   port = int(os.getenv("PORT"))
+   port = int(os.getenv("PORT","5000"))
    app.run(host="0.0.0.0", port=port)
