@@ -54,6 +54,8 @@ def root():
 
 @app.route("/callback", methods=['POST'])
 def callback():
+    print("コールバック")
+
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
@@ -68,6 +70,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
 
