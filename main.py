@@ -77,6 +77,8 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
 
+    return {}, 200
+
 
 # 友達追加イベントらしい
 
