@@ -19,6 +19,9 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FollowEvent,
 )
 
+print("http番号を入力")
+http_number = str(input())
+
 audio = os.listdir("midnightEXP")
 
 print(audio)
@@ -85,5 +88,5 @@ def handle_follow(event):  # ラインAPIの返信機能関数に
 
 if __name__ == "__main__":
     print("起動する")
-    port = int(os.getenv("PORT", "5000"))
+    port = int(os.getenv("PORT", http_number))
     app.run(host="0.0.0.0", port=port)
