@@ -72,7 +72,6 @@ def handle_message(event):
 
     play(AudioData[event.message.text])
 
-    abort(200)
 
 # 友達追加イベントらしい
 
