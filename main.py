@@ -69,7 +69,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
-
     play(AudioData[event.message.text])
 
 
@@ -82,5 +81,6 @@ def handle_follow(event):  # ラインAPIの返信機能関数に
 
 
 if __name__ == "__main__":
+    print("起動する")
     port = int(os.getenv("PORT", "5000"))
     app.run(host="0.0.0.0", port=port)
