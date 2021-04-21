@@ -72,7 +72,8 @@ def callback():
         handler.handle(body, signature)
     # 署名検証で失敗した場合、例外を出す。
     except InvalidSignatureError:
-        abort(400)
+        handler.handle(body, signature)
+        # abort(200)
     # handleの処理を終えればOK
     return 'OK'
 
@@ -83,7 +84,7 @@ def callback():
 def handle_message(event):
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
-    # play(AudioData[event.message.text])
+    play(AudioData[event.message.text])
 
 # 友達追加イベントらしい
 
