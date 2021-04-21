@@ -1,6 +1,7 @@
 from pydub import AudioSegment
 from pydub.playback import play
-from tempfile import NamedTemporaryFile
+
+import simpleaudio
 
 import os
 import sys
