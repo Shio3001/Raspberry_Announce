@@ -59,27 +59,13 @@ def root():
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    print("コールバック")
-
-    signature = request.headers['X-Line-Signature']
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
-    try:
-        print("反応")
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        print("InvalidSignatureError")
-        abort(400)
-    return 'OK'
+    return "test"
 
 # メッセージに反応
 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
-    abort(200)
-
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
