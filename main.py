@@ -59,7 +59,22 @@ def root():
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    return "test"
+    # リクエストヘッダーから署名検証のための値を取得します。
+    signature = request.headers['X-Line-Signature']
+
+    # リクエストボディを取得します。
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+
+    # handle webhook body
+    # 署名を検証し、問題なければhandleに定義されている関数を呼び出す。
+    try:
+        handler.handle(body, signature)
+    # 署名検証で失敗した場合、例外を出す。
+    except InvalidSignatureError:
+        abort(400)
+    # handleの処理を終えればOK
+    return 'OK'
 
 # メッセージに反応
 
@@ -68,7 +83,7 @@ def callback():
 def handle_message(event):
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
-    play(AudioData[event.message.text])
+    # play(AudioData[event.message.text])
 
 # 友達追加イベントらしい
 
