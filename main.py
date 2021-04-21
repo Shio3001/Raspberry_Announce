@@ -67,7 +67,7 @@ def callback():
         handler.handle(body, signature)
     except InvalidSignatureError:
         print("InvalidSignatureError")
-        abort(200)
+        abort(400)
     return 'OK'
 
 # メッセージに反応
@@ -75,6 +75,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+
+    abort(200)
+
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
