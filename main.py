@@ -1,5 +1,7 @@
 from pydub import AudioSegment
 from pydub.playback import play
+from tempfile import NamedTemporaryFile
+
 import os
 import sys
 import json
@@ -82,12 +84,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    if event.message.text == "stop":
-        play(stop=True)
+    simpleaudio.stop_all()
 
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
-    play(AudioData[event.message.text], stop=True)
+    play(AudioData[event.message.text])
 
 # 友達追加イベントらしい
 
