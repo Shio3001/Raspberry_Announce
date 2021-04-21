@@ -20,7 +20,7 @@ from linebot.models import (
 )
 
 print("http番号を入力")
-http_number = str(input())
+http_number = int(input().rstrip())
 
 audio = os.listdir("midnightEXP")
 
@@ -65,6 +65,7 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
+        print("InvalidSignatureError")
         abort(200)
     return 'OK'
 
@@ -76,9 +77,6 @@ def handle_message(event):
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
-
-    return {}, 200
-
 
 # 友達追加イベントらしい
 
