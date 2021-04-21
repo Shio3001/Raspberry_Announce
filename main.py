@@ -19,6 +19,8 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FollowEvent,
 )
 
+import datetime
+
 print("http番号を入力")
 http_number = int(input().rstrip())
 
@@ -52,7 +54,7 @@ handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/")
 def root():
-    return "open"
+    return str(datetime.datetime.now())
 
 
 @app.route("/callback", methods=['POST'])
