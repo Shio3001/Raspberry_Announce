@@ -7,6 +7,7 @@ import json
 
 import RPi.GPIO as GPIO # RPi.GPIOモジュールを使用
 
+GPIO.setmode(GPIO.BCM)  #GPIOへアクセスする番号をBCMの番号で指定することを宣言します。                        
 GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。                                                      
 
 audio = os.listdir("midnightEXP")
