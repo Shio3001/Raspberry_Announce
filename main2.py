@@ -30,7 +30,7 @@ counter = 0
 try:
         while True:
                 if GPIO.input(2) == GPIO.HIGH:
-                    play(counter)
+                    play(str(counter))
                     print("再生",counter)
 
                     counter += 1
