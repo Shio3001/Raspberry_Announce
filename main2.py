@@ -29,7 +29,7 @@ counter = 0
 
 try:
         while True:
-                if GPIO.input(2) == GPIO.LOW:
+                if GPIO.input(2) == GPIO.HIGH:
                     play(AudioData[str(counter)])
                     print("再生",counter)
 
