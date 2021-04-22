@@ -1,8 +1,6 @@
 from pydub import AudioSegment
 from pydub.playback import play
 
-import simpleaudio
-
 import os
 import sys
 import json
@@ -32,6 +30,8 @@ audio = os.listdir("midnightEXP")
 print(audio)
 
 AudioData = {}
+
+# ngrokのURL末尾には/callbackをつけること
 
 for i in audio:
     if i[-3:] != "mp3":
