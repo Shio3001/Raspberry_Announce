@@ -85,8 +85,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    simpleaudio.stop_all()
-
     print("再生イベント")
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='再生'))
     play(AudioData[event.message.text])
