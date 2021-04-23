@@ -28,12 +28,12 @@ for i in audio:
 counter = 0
 
 GPIO.setmode(GPIO.BCM)  #GPIOへアクセスする番号をBCMの番号で指定することを宣言します。                        
-GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。                                                      
+GPIO.setup(3,GPIO.IN)   #BCM 2番ピンを入力に設定します。                                                      
 
 
 try:
         while True:
-                if GPIO.input(2) == GPIO.LOW:
+                if GPIO.input(3) == GPIO.LOW:
                     play(AudioData[str(counter)])
                     print("再生",counter)
 
