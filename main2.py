@@ -30,16 +30,25 @@ counter = 0
 GPIO.setmode(GPIO.BCM)  #GPIOへアクセスする番号をBCMの番号で指定することを宣言します。                        
 GPIO.setup(2,GPIO.IN)   #BCM 2番ピンを入力に設定します。                                                      
 
+flag = True
 
 try:
         while True:
-                if GPIO.input(2) == GPIO.LOW:
-                    play(AudioData[str(counter)])
+                if GPIO.input(2) == GPIO.HIGH and flag:
+
+                    flag = False
+
                     print("再生",counter)
 
+                    play(AudioData[str(counter)])
+                    
                     counter += 1
 
-                time.sleep(1)
+                    time.sleep(3)
+
+                    flag = True
+
+                
                     
 except KeyboardInterrupt:
         GPIO.cleanup()
