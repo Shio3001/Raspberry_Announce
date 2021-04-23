@@ -40,7 +40,7 @@ try:
 
                     print("再生",counter)
 
-                    play(AudioData[str(counter)])
+                    #play(AudioData[str(counter)])
                     
                     counter += 1
 
