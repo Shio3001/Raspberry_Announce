@@ -35,9 +35,9 @@ try:
                     play(AudioData[str(counter)])
                     print("再生",counter)
 
-                    time.sleep(1)
-
                     counter += 1
+
+                time.sleep(1)
                     
 except KeyboardInterrupt:
         GPIO.cleanup()
